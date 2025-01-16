@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [submissions, setSubmissions] = useState([]);
+  const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   useEffect(() => {
     const getSubmissions = async () => {
@@ -34,7 +35,7 @@ const AdminDashboard = () => {
                       {submission.images.map((image, i) => (
                         <img
                           key={i}
-                          src={`http://localhost:5000/${image}`}
+                          src={`${BASE_URL}/${image}`}
                           alt={`Submission-${index}-${i}`}
                           className="img-thumbnail m-1"
                           style={{ width: '100px', height: '100px', objectFit: 'cover' }}
