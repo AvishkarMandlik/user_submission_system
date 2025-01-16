@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const baseURL =
-  process.env.REACT_APP_ENV === 'production'
+  process.env.REACT_APP_API_URL === 'production'
     ? 'https://user-submission-system.onrender.com/api' 
     : 'http://localhost:5000/api';
 
