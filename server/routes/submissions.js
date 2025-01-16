@@ -5,6 +5,7 @@ const Submission = require('../models/Submission');
 
 const router = express.Router();
 
+// Multer configuration
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: (req, file, cb) => {
@@ -15,7 +16,8 @@ const upload = multer({ storage });
 
 router.post('/', upload.array('images', 10), async (req, res) => {
   const { name, socialMediaHandle } = req.body;
-  const imagePaths = req.files.map(file => file.path);
+
+  const imagePaths = req.files.map(file => `${req.protocol}://${req.get('host')}/uploads/${file.filename}`);
 
   try {
     const newSubmission = new Submission({
