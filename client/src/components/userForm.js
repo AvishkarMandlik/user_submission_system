@@ -16,6 +16,7 @@ const UserForm = () => {
     try {
       await submitForm(formData);
       alert('Form submitted successfully');
+      window.location.reload();
     } catch (error) {
       console.error(error);
       alert('Error submitting form');
